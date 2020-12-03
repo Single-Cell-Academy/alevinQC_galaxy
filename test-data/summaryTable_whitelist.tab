@@ -1,0 +1,8 @@
+Total number of processed reads	7197662
+Number of reads with Ns	35362
+Number of reads with valid cell barcode (no Ns)	7162300
+Number of mapped reads	4869156
+Percent mapped (of all reads)	67.65%
+Number of noisy CB reads	1003624
+Number of noisy UMI reads	266
+Total number of observed cell barcodes	188613
