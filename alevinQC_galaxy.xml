@@ -1,5 +1,8 @@
-<tool id="alevinQC" name="AlevinQC" version="0.1.0">
+<tool id="alevinQC" name="AlevinQC" version="@VERSION@+galaxy@VERSION_SUFFIX@">
   <description>produces quality control reports for salmon-alevin runs.</description>
+  <macros>
+    <import>macros.xml</import>
+  </macros>
   <requirements>
     <requirement type="package" version="1.6.0">bioconductor-alevinqc</requirement>
   </requirements>
@@ -57,16 +60,16 @@
         </test>
     </tests>
     <help><![CDATA[
-      This is a galaxy wrapper for the AlevinQC bioconductor package to produce quality control plots, such as knee plots for salmon alevin runs. This tool has been tested with upstream use of the galaxy implementation for alevin by bgruening:
-      'Salmon alevin galaxy tool<https://github.com/bgruening/galaxytools/tree/master/tools/salmon>'.
+      This is a galaxy wrapper for the AlevinQC bioconductor package to produce quality control plots, such as knee plots for salmon alevin runs. This tool can be used downstream of the galaxy implementation for Alevin by bgruening:
+      'Alevin <https://github.com/bgruening/galaxytools/tree/master/tools/salmon>' __ galaxy tool.
 
       To use this tool with your salmon alevin runs, please select the dumpFeatures option.
 
       The AlevinQC package is developed by Charlotte Soneson and Avi Srivastava.
 
-      Visit `AlevinQC_Github <https://csoneson.github.io/alevinQC/index.html>`__ page
+      Visit the `AlevinQC_Github <https://csoneson.github.io/alevinQC/index.html>`__ page.
 
-      Visit `AlevinQC_Bioconductor <http://www.bioconductor.org/packages/release/bioc/html/alevinQC.html>`__ page
+      Visit the `AlevinQC_Bioconductor <http://www.bioconductor.org/packages/release/bioc/html/alevinQC.html>`__ page.
     ]]></help>
     <citations>
         <citation type="doi">10.18129/B9.bioc.alevinQC</citation>

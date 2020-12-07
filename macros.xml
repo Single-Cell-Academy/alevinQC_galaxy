@@ -1,0 +1,4 @@
+<macros>
+  <token name="@VERSION@">1.6.0</token>
+  <token name="@VERSION_SUFFIX@">0</token>
+</macros>
