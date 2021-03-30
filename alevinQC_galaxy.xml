@@ -1,8 +1,5 @@
-<tool id="alevinQC" name="AlevinQC" version="@VERSION@+galaxy@VERSION_SUFFIX@">
+<tool id="alevinQC" name="AlevinQC" version="0.1.0">
   <description>produces quality control reports for salmon-alevin runs.</description>
-  <macros>
-    <import>macros.xml</import>
-  </macros>
   <requirements>
     <requirement type="package" version="1.6.0">bioconductor-alevinqc</requirement>
   </requirements>
@@ -16,20 +13,15 @@
          && ln -sf '$input_meta' "meta_info.json"
          && mv "alevin_meta_info.json" "meta_info.json" ./aux_info
          && ln -sf '$input_cmd_info' "cmd_info.json"
-         #if $whitelist
-          && ln -sf '$whitelist' "whitelist.txt"
-          && mv "whitelist.txt" ./alevin
-         #end if
          && Rscript --version
          && Rscript '$__tool_directory__/run_alevinQC.R'
     ]]></command>
     <inputs>
-      <param name="input_feature_dump" type="data" label="Feature Dump" format="txt" help="The featureDump.txt file from alevin output."/>
-      <param name="input_rawcbfreq" type="data" format="txt" label="Raw cell barcode frequencies" help="The raw_cb_frequency.txt file from alevin output."/>
-      <param name="input_meta" type="data" format="json" label="" help="The meta_info.json file from alevin output."/>
-      <param name="input_alevin_meta" type="data" label="Alevin meta info" format="json" help="The alevin_meta_info.json file from alevin output."/>
-      <param name="input_cmd_info" type="data" label="cmd info" format="json" help="The cmd_info.json file from alevin output."/>
-      <param name="whitelist" type="data" label="Barcode Whitelist (Optional)" format="txt" help="Whitelist of cell barcodes if used to run alevin. (Optional)" optional="true"/>
+      <param name="input_feature_dump" type="data" format="txt" help="The featureDump.txt from alevin output."/>
+      <param name="input_rawcbfreq" type="data" format="txt" help="The raw_cb_frequency.txt from alevin output."/>
+      <param name="input_meta" type="data" format="txt" help="The meta_info.json from alevin output."/>
+      <param name="input_alevin_meta" type="data" format="txt" help="The alevin_meta_info.json from alevin output."/>
+      <param name="input_cmd_info" type="data" format="txt" help="The cmd_info.json from alevin output."/>
     </inputs>
     <outputs>
       <data name="alevin_kneeplot" label="alevin_kneeplot.pdf" format="pdf" from_work_dir="alevin_kneeplot.pdf"/>
@@ -47,29 +39,18 @@
           <output name="alevin_barodeFrequency_quant" value="alevin_barodeFrequency_quant.pdf"/>
           <output name="summaryTable" value="summaryTable.tab"/>
         </test>
-        <test>
-          <param name="input_feature_dump" value="featureDump.txt"/>
-          <param name="input_rawcbfreq" value="raw_cb_frequency.txt"/>
-          <param name="input_alevin_meta" value="alevin_meta_info.json"/>
-          <param name="input_meta" value="meta_info.json"/>
-          <param name="input_cmd_info" value="cmd_info.json"/>
-          <param name="whitelist" value="whitelist.txt"/>
-          <output name="alevin_kneeplot" value="alevin_kneeplot_whitelist.pdf"/>
-          <output name="alevin_barodeFrequency_quant" value="alevin_barodeFrequency_quant_whitelist.pdf"/>
-          <output name="summaryTable" value="summaryTable_whitelist.tab"/>
-        </test>
     </tests>
     <help><![CDATA[
-      This is a galaxy wrapper for the AlevinQC bioconductor package to produce quality control plots, such as knee plots for salmon alevin runs. This tool can be used downstream of the galaxy implementation for Alevin by bgruening:
-      'Alevin <https://github.com/bgruening/galaxytools/tree/master/tools/salmon>' __ galaxy tool.
+      This is a galaxy wrapper for the AlevinQC bioconductor package to produce quality control plots, such as knee plots for salmon alevin runs. This tool has been tested with upstream use of the galaxy implementation for alevin by bgruening:
+      'Salmon alevin galaxy tool<https://github.com/bgruening/galaxytools/tree/master/tools/salmon>'.
 
       To use this tool with your salmon alevin runs, please select the dumpFeatures option.
 
       The AlevinQC package is developed by Charlotte Soneson and Avi Srivastava.
 
-      Visit the `AlevinQC_Github <https://csoneson.github.io/alevinQC/index.html>`__ page.
+      Visit `AlevinQC_Github <https://csoneson.github.io/alevinQC/index.html>`__ page
 
-      Visit the `AlevinQC_Bioconductor <http://www.bioconductor.org/packages/release/bioc/html/alevinQC.html>`__ page.
+      Visit `AlevinQC_Bioconductor <http://www.bioconductor.org/packages/release/bioc/html/alevinQC.html>`__ page
     ]]></help>
     <citations>
         <citation type="doi">10.18129/B9.bioc.alevinQC</citation>
