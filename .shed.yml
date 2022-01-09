@@ -1,0 +1,8 @@
+name: alevinqc
+owner: florian.wuennemann
+description: "AlevinQC produces quality control reports for salmon-alevin runs."
+categories:
+- Transcriptomics
+- Sequence Analysis
+homepage_url: https://bioconductor.org/packages/release/bioc/html/alevinQC.html
+remote_repository_url: https://github.com/Single-Cell-Academy/alevinQC_galaxy
